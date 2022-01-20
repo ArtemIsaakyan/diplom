@@ -1,0 +1,17 @@
+.menu {
+  .nav {
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      li {
+        margin-right: 30px;
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 23px;
+        }
+      }
+    }
+  }
+}
