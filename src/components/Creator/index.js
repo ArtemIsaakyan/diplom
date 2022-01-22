@@ -5,9 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+import './Creator.scss';
 import Calculate from '../Calcualte';
 
-export default function Creator({ users,exercises }) {
+export default function Creator({ users, exercises }) {
   const [user, selectUser] = React.useState('default');
 
   const handleChange = (event) => {
@@ -16,7 +17,7 @@ export default function Creator({ users,exercises }) {
 
   return (
     <React.Fragment>
-      <h2>Создание программы тренеровок</h2>
+      <h2 className='header-creator'>Создание программы тренеровок</h2>
       <Box sx={{ maxWidth: 240 }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Выбрать пользователя</InputLabel>
@@ -37,7 +38,7 @@ export default function Creator({ users,exercises }) {
           </Select>
         </FormControl>
       </Box>
-      <Calculate userId={user} exercises={exercises}/>
+      <Calculate userId={user} exercises={exercises} />
     </React.Fragment>
   );
 }

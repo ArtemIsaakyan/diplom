@@ -6,6 +6,7 @@ export default function Menu() {
   return (
     <div className="menu">
       <div className="nav">
+      <div className="logo">Fintess App</div>
         <ul>
           <li>
             <Link to="/Home">Главная страница</Link>

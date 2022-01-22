@@ -9,15 +9,14 @@ export default function Calcualte({ userId }) {
   const [recomendedCalories, setRecomendedCalories] = React.useState('');
   const [reciveExercises, setReciveExercises] = React.useState('');
   const [exercises, setExercises] = React.useState('');
-  const [program, setProgram] = React.useState('');
 
   React.useEffect(() => {
     async function fetchData() {
       try {
-        const [exercisesrResponse] = await Promise.all([
+        const [exercisesResponse] = await Promise.all([
           axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/exercises'),
         ]);
-        setExercises(exercisesrResponse.data);
+        setExercises(exercisesResponse.data);
       } catch (error) {
         alert('Ошибка при запросе данных ;(');
         console.error(error);
@@ -46,6 +45,9 @@ export default function Calcualte({ userId }) {
   function calculateIMT(data) {
     // формула по расчету СТЕПЕНИ ОЖИРЕНИЯ
     let valueIMT = data[0].weight / Math.pow(data[0].height / 100, 2);
+    for (let i = 0; i < exercises.length; i++) {
+      console.log(exercises[i].IMT['Выраженный дефицит массы тела']);
+    }
 
     // формула по расчету ПОТРЕБЛЕНИЯ КАЛОРИЙ
     if (data[0].sex === 'm') {
@@ -74,25 +76,25 @@ export default function Calcualte({ userId }) {
 
     if (valueIMT <= 16) {
       setConcluison('Выраженный дефицит массы тела');
-      setReciveExercises(exercises.filter((item) => item.IMT === 'Выраженный дефицит массы тела'));
+      setReciveExercises(exercises.filter((item) => item.IMT['Выраженный дефицит массы тела']));
     } else if (valueIMT > 18.5 && valueIMT <= 25) {
       setConcluison('Норма');
-      setReciveExercises(exercises.filter((item) => item.IMT === 'Норма'));
+      setReciveExercises(exercises.filter((item) => item.IMT['Норма']));
     } else if (valueIMT > 25 && valueIMT <= 30) {
       setConcluison('Избыточная масса тела (предожирение)');
       setReciveExercises(
-        exercises.filter((item) => item.IMT === 'Избыточная масса тела (предожирение)'),
+        exercises.filter((item) => item.IMT === item.IMT['Избыточная масса тела (предожирение)']),
       );
     } else if (valueIMT > 30 && valueIMT <= 35) {
       setConcluison('Ожирение первой степени');
-      setReciveExercises(exercises.filter((item) => item.IMT === 'Ожирение первой степени'));
+      setReciveExercises(exercises.filter((item) => item.IMT['Ожирение первой степени']));
     } else if (valueIMT > 35 && valueIMT <= 40) {
       setConcluison('Ожирение второй степени');
-      setReciveExercises(exercises.filter((item) => item.IMT === 'Ожирение второй степени'));
+      setReciveExercises(exercises.filter((item) => item.IMT['Ожирение второй степени']));
     } else if (valueIMT > 40) {
       setConcluison('Ожирение третьей степени (морбидное)');
       setReciveExercises(
-        exercises.filter((item) => item.IMT === 'Ожирение третьей степени (морбидное)'),
+        exercises.filter((item) => item.IMT === item.IMT['Ожирение третьей степени (морбидное)']),
       );
     }
   }
@@ -114,8 +116,8 @@ export default function Calcualte({ userId }) {
             <div key={item.id} className="exerciseBlock">
               <div className="nameOfExercise">{item.name}</div>
               <div>
-                <div className="labelApproch">Подходы/повторения:</div> {item.approaches} подхода по{' '}
-                {item.repetitions} повторений
+                <div className="labelApproach">Подходы/повторения:</div> {item.approaches} подхода
+                по {item.repetitions} повторений
               </div>
               <div>
                 <img src={`Assets/images/${item.image}.gif`} />
@@ -152,25 +154,6 @@ export default function Calcualte({ userId }) {
               </div>
             </div>
           ) : null,
-        )}
-      {program && <h3>Тренировка 1</h3>}
-      {program &&
-        program.map((item) =>
-          item.body === 'бицепс, трицепс' ? (
-            <React.Fragment>
-              <div key={item.id}>{item.name}</div>
-            </React.Fragment>
-          ) : null,
-        )}
-      {program && <h3>Тренировка 2</h3>}
-      {program &&
-        program.map((item) =>
-          item.body === 'ноги, плечи' ? <div key={item.id}>{item.name}</div> : null,
-        )}
-      {program && <h3>Тренировка 3</h3>}
-      {program &&
-        program.map((item) =>
-          item.body === 'руки, ноги' ? <div key={item.id}>{item.name}</div> : null,
         )}
     </React.Fragment>
   );
