@@ -1,16 +1,42 @@
 .calcualteBtn {
   margin: 30px 0;
+  display: flex;
+  justify-content: center;
 }
 
-.exerciseBlock {
-  font-size: 16px;
-  font-family: 'Exo 2', sans-serif;
-  margin-bottom: 20px;
-  .labelApproach {
-    margin: 5px 0;
+.select_block {
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-radius: 7px;
+  width: 800px;
+  thead {
+    tr {
+      th {
+        padding: 20px 25px;
+        border-bottom: 1px solid rgb(196, 193, 193);
+      }
+    }
   }
-  .nameOfExercise {
-    font-size: 18px;
-    font-weight: 600;
+
+  tbody {
+    tr {
+      td {
+        padding: 16px 5px;
+        text-align: center;
+        border-bottom: 0.5px solid rgb(196, 193, 193);
+      }
+    }
   }
 }

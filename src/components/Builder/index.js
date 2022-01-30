@@ -10,6 +10,7 @@ export default function Builder() {
   const [name, setName] = React.useState('');
   const [sex, setSex] = React.useState('');
   const [goal, setGoal] = React.useState('');
+  const [days, setDays] = React.useState('');
   const [age, setAge] = React.useState('');
   const [height, setHeight] = React.useState('');
   const [weight, setWeight] = React.useState('');
@@ -36,14 +37,18 @@ export default function Builder() {
   const handleChangeActivity = (event) => {
     setPhysicalActivity(event.target.value);
   };
+  const handleChangeDays = (event) => {
+    setDays(event.target.value);
+  };
 
   function save() {
-    if (name && age && goal && height && weight && sex && physicalActivity) {
+    if (name && age && goal && days && height && weight && sex && physicalActivity) {
       axios
         .post('https://618101ae8bfae60017adfd5e.mockapi.io/users', {
           name: name,
           sex: sex,
           goal: goal,
+          days: days,
           age: age,
           height: height,
           weight: weight,
@@ -63,12 +68,12 @@ export default function Builder() {
 
   return (
     <React.Fragment>
-      <h2 className="header_wrapper">Введите свои данные</h2>
+      <h2 className="header_wrapper">Введите данные</h2>
       <div className="builder_wrapper">
         <Mui.Box component="form" noValidate autoComplete="off" className="name_field">
           <Mui.TextField
             id="standard-basic"
-            label="Ваше имя"
+            label="Название тренировки"
             variant="standard"
             value={name}
             onChange={handleChangeName}
@@ -99,6 +104,22 @@ export default function Builder() {
               onChange={handleChangeGoal}>
               <Mui.MenuItem value={'loseWeight'}>Похудеть</Mui.MenuItem>
               <Mui.MenuItem value={'gainWeight'}>Набор мышечной массы</Mui.MenuItem>
+            </Mui.Select>
+          </Mui.FormControl>
+        </Mui.Box>
+        <Mui.Box sx={{ minWidth: 120 }} className="numberOfDays">
+          <Mui.FormControl fullWidth>
+            <Mui.InputLabel id="demo-simple-select-label">
+              Желаемое количество тренировок
+            </Mui.InputLabel>
+            <Mui.Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={days}
+              label="Цель"
+              onChange={handleChangeDays}>
+              <Mui.MenuItem value={'twoDays'}>2 дня в неделю</Mui.MenuItem>
+              <Mui.MenuItem value={'threeDays'}>3 дня в неделю</Mui.MenuItem>
             </Mui.Select>
           </Mui.FormControl>
         </Mui.Box>

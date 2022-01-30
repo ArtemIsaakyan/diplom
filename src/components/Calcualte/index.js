@@ -45,10 +45,6 @@ export default function Calcualte({ userId }) {
   function calculateIMT(data) {
     // формула по расчету СТЕПЕНИ ОЖИРЕНИЯ
     let valueIMT = data[0].weight / Math.pow(data[0].height / 100, 2);
-    for (let i = 0; i < exercises.length; i++) {
-      console.log(exercises[i].IMT['Выраженный дефицит массы тела']);
-    }
-
     // формула по расчету ПОТРЕБЛЕНИЯ КАЛОРИЙ
     if (data[0].sex === 'm') {
       let BMR = 88.36 + 13.4 * data[0].weight + 4.8 * data[0].height - 5.7 * data[0].age;
@@ -98,63 +94,160 @@ export default function Calcualte({ userId }) {
       );
     }
   }
+
+  var firstCount = 2;
+  var secondCount = 2;
+  var thirdCount = 2;
+
   return (
     <React.Fragment>
-      {concluison && <div>Расчёт индекса массы тела: {concluison} </div>}
-      {recomendedCalories && (
-        <div>Суточная норма калорий: {recomendedCalories.toFixed(0)} ккал</div>
-      )}
       <Stack className="calcualteBtn" direction="row" spacing={2}>
         <Button variant="contained" color="success" onClick={() => selectUser()}>
           Создать
         </Button>
       </Stack>
-      <h3>Тренировка №1</h3>
-      {reciveExercises &&
-        reciveExercises.map((item) =>
-          item.body === 'Спина, бицепс' ? (
-            <div key={item.id} className="exerciseBlock">
-              <div className="nameOfExercise">{item.name}</div>
-              <div>
-                <div className="labelApproach">Подходы/повторения:</div> {item.approaches} подхода
-                по {item.repetitions} повторений
-              </div>
-              <div>
-                <img src={`Assets/images/${item.image}.gif`} />
-              </div>
-            </div>
-          ) : null,
+      <div className="info_block">
+        {concluison && <h3>Информация</h3>}
+
+        {concluison && <div>Расчёт индекса массы тела: {concluison} </div>}
+        {recomendedCalories && (
+          <div>Суточная норма калорий: {recomendedCalories.toFixed(0)} ккал</div>
         )}
-      <h3>Тренировка №2</h3>
-      {reciveExercises &&
-        reciveExercises.map((item) =>
-          item.body === 'Грудь, трицепс' ? (
-            <div key={item.id}>
-              <div>{item.name}</div>
-              <div>
-                Подходы/повторения: {item.approaches} подхода по {item.repetitions} повторений
-              </div>
-              <div>
-                <img src={`Assets/images/${item.image}.gif`} />
-              </div>
-            </div>
-          ) : null,
-        )}
-      <h3>Тренировка №3</h3>
-      {reciveExercises &&
-        reciveExercises.map((item) =>
-          item.body === 'Ноги, плечи' ? (
-            <div key={item.id}>
-              <div>{item.name}</div>
-              <div>
-                Подходы/повторения: {item.approaches} подхода по {item.repetitions} повторений
-              </div>
-              <div>
-                <img src={`Assets/images/${item.image}.gif`} />
-              </div>
-            </div>
-          ) : null,
-        )}
+      </div>
+      {concluison && <h3>Тренировка №1</h3>}
+      {concluison && (
+        <table>
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Название упражнения</th>
+              <th>Подходы</th>
+              <th>Повторения</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>Разминка</td>
+              <td>5-10 мин</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Работа на кардиотренажёре</td>
+              <td>5 мин</td>
+              <td></td>
+            </tr>
+            {reciveExercises &&
+              reciveExercises.map((item) =>
+                item.body === 'Спина, бицепс' ? (
+                  <tr key={item.id}>
+                    <td>{firstCount++}</td>
+                    <td>{item.name}</td>
+                    <td>{item.approaches}</td>
+                    <td>{item.repetitions}</td>
+                    <td>{/* <img src={`Assets/images/${item.image}.gif`} /> */}</td>
+                  </tr>
+                ) : null,
+              )}
+            <tr>
+              <td></td>
+              <td>Заминка</td>
+              <td>2-5 мин</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      )}
+
+      {concluison && <h3>Тренировка №2</h3>}
+      {concluison && (
+        <table>
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Название упражнения</th>
+              <th>Подходы</th>
+              <th>Повторения</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>Разминка</td>
+              <td>5-10 мин</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Работа на кардиотренажёре</td>
+              <td>5 мин</td>
+              <td></td>
+            </tr>
+            {reciveExercises &&
+              reciveExercises.map((item) =>
+                item.body === 'Грудь, трицепс' ? (
+                  <tr key={item.id}>
+                    <td>{secondCount++}</td>
+                    <td>{item.name}</td>
+                    <td>{item.approaches}</td>
+                    <td>{item.repetitions}</td>
+                  </tr>
+                ) : null,
+              )}
+            <tr>
+              <td></td>
+              <td>Заминка</td>
+              <td>2-5 мин</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      )}
+      {concluison && <h3>Тренировка №3</h3>}
+      {concluison && (
+        <table>
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Название упражнения</th>
+              <th>Подходы</th>
+              <th>Повторения</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>Разминка</td>
+              <td>5-10 мин</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Работа на кардиотренажёре</td>
+              <td>5 мин</td>
+              <td></td>
+            </tr>
+            {reciveExercises &&
+              reciveExercises.map((item) =>
+                item.body === 'Ноги, плечи' ? (
+                  <tr key={item.id}>
+                    <td>{thirdCount++}</td>
+                    <td>{item.name}</td>
+                    <td>{item.approaches}</td>
+                    <td>{item.repetitions}</td>
+                  </tr>
+                ) : null,
+              )}
+            <tr>
+              <td></td>
+              <td>Заминка</td>
+              <td>2-5 мин</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      )}
     </React.Fragment>
   );
 }

@@ -17,27 +17,29 @@ export default function Creator({ users, exercises }) {
 
   return (
     <React.Fragment>
-      <h2 className='header-creator'>Создание программы тренеровок</h2>
-      <Box sx={{ maxWidth: 240 }}>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Выбрать пользователя</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={user}
-            label="Выбрать пользователя"
-            onChange={handleChange}>
-            <MenuItem value="default" selected>
-              Выбрать пользователя
-            </MenuItem>
-            {users.map((val) => (
-              <MenuItem key={val.id} value={val.id}>
-                {val.name}
+      <h2 className="header-creator">Программа тренеровок</h2>
+      <div className="select_block">
+        <Box sx={{ maxWidth: 240 }}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Выбрать пользователя</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={user}
+              label="Выбрать пользователя"
+              onChange={handleChange}>
+              <MenuItem value="default" selected>
+                Выбрать пользователя
               </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
+              {users.map((val) => (
+                <MenuItem key={val.id} value={val.id}>
+                  {val.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+      </div>
       <Calculate userId={user} exercises={exercises} />
     </React.Fragment>
   );
