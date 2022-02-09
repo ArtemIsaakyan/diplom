@@ -8,8 +8,8 @@ import './Calculate.scss';
 export default function Calcualte({ userId }) {
   const [concluison, setConcluison] = React.useState('');
   const [recomendedCalories, setRecomendedCalories] = React.useState('');
-  const [reciveExercises, setReciveExercises] = React.useState('');
-  const [exercises, setExercises] = React.useState('');
+  const [reciveExercises, setReciveExercises] = React.useState(''); // получаем выборку из exercises
+  const [exercises, setExercises] = React.useState(''); // получаем массив со всеми упражнениями
   const [active, setActive] = React.useState('');
   const [status, setStatus] = React.useState(false);
 
@@ -17,7 +17,7 @@ export default function Calcualte({ userId }) {
     async function fetchData() {
       try {
         const [exercisesResponse] = await Promise.all([
-          axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/exercises'),
+          axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/newExercises'),
         ]);
         setExercises(exercisesResponse.data);
       } catch (error) {
@@ -75,26 +75,22 @@ export default function Calcualte({ userId }) {
 
     if (valueIMT <= 16) {
       setConcluison('Выраженный дефицит массы тела');
-      setReciveExercises(exercises.filter((item) => item.IMT['Выраженный дефицит массы тела']));
+      setReciveExercises(exercises[0]['Выраженный дефицит массы тела']);
     } else if (valueIMT > 18.5 && valueIMT <= 25) {
       setConcluison('Норма');
       setReciveExercises(exercises.filter((item) => item.IMT['Норма']));
     } else if (valueIMT > 25 && valueIMT <= 30) {
       setConcluison('Избыточная масса тела (предожирение)');
-      setReciveExercises(
-        exercises.filter((item) => item.IMT === item.IMT['Избыточная масса тела (предожирение)']),
-      );
+      setReciveExercises(exercises[0]['Избыточная масса тела (предожирение)']);
     } else if (valueIMT > 30 && valueIMT <= 35) {
       setConcluison('Ожирение первой степени');
-      setReciveExercises(exercises.filter((item) => item.IMT['Ожирение первой степени']));
+      setReciveExercises(exercises[0]['Ожирение первой степени']);
     } else if (valueIMT > 35 && valueIMT <= 40) {
       setConcluison('Ожирение второй степени');
-      setReciveExercises(exercises.filter((item) => item.IMT['Ожирение второй степени']));
+      setReciveExercises(exercises[0]['Ожирение второй степени']);
     } else if (valueIMT > 40) {
       setConcluison('Ожирение третьей степени (морбидное)');
-      setReciveExercises(
-        exercises.filter((item) => item.IMT === item.IMT['Ожирение третьей степени (морбидное)']),
-      );
+      setReciveExercises(exercises[0]['Ожирение третьей степени (морбидное)']);
     }
   }
 
@@ -150,44 +146,42 @@ export default function Calcualte({ userId }) {
               <td></td>
             </tr>
             {reciveExercises &&
-              reciveExercises.map((item) =>
-                item.body === 'Спина, бицепс' ? (
-                  <tr key={item.id}>
-                    <td className="firstCount">{firstCount++}</td>
-                    <td className="name">{item.name}</td>
-                    <td className="approaches">{item.approaches}</td>
-                    <td className="repetitions">{item.repetitions}</td>
-                    <td className="more">
-                      {item.id === active && status ? (
-                        <Button
-                          variant="outlined"
-                          color="error"
-                          onClick={() => btnShow(item.id, status)}>
-                          СКРЫТЬ
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="outlined"
-                          color="success"
-                          onClick={() => btnShow(item.id, status)}>
-                          ПОКАЗАТЬ
-                        </Button>
-                      )}
-                      <div
-                        className={classNames(
-                          item.id,
-                          item.id === active
-                            ? status && {
-                                active: status ? status : status,
-                              }
-                            : null,
-                        )}>
-                        <img src={`Assets/images/${item.image}.gif`} alt={item.image} />
-                      </div>
-                    </td>
-                  </tr>
-                ) : null,
-              )}
+              reciveExercises['first_day'].map((item) => (
+                <tr key={item.id}>
+                  <td className="firstCount">{firstCount++}</td>
+                  <td className="name">{item.name}</td>
+                  <td className="approaches">{item.approaches}</td>
+                  <td className="repetitions">{item.repetitions}</td>
+                  <td className="more">
+                    {item.id === active && status ? (
+                      <Button
+                        variant="outlined"
+                        color="error"
+                        onClick={() => btnShow(item.id, status)}>
+                        СКРЫТЬ
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        color="success"
+                        onClick={() => btnShow(item.id, status)}>
+                        ПОКАЗАТЬ
+                      </Button>
+                    )}
+                    <div
+                      className={classNames(
+                        item.id,
+                        item.id === active
+                          ? status && {
+                              active: status ? status : status,
+                            }
+                          : null,
+                      )}>
+                      <img src={`Assets/images/${item.image}.png`} alt={item.image} />
+                    </div>
+                  </td>
+                </tr>
+              ))}
             <tr>
               <td></td>
               <td>Заминка</td>
@@ -227,44 +221,42 @@ export default function Calcualte({ userId }) {
               <td></td>
             </tr>
             {reciveExercises &&
-              reciveExercises.map((item) =>
-                item.body === 'Грудь, трицепс' ? (
-                  <tr key={item.id}>
-                    <td className="firstCount">{secondCount++}</td>
-                    <td className="name">{item.name}</td>
-                    <td className="approaches">{item.approaches}</td>
-                    <td className="repetitions">{item.repetitions}</td>
-                    <td className="more">
-                      {item.id === active && status ? (
-                        <Button
-                          variant="outlined"
-                          color="error"
-                          onClick={() => btnShow(item.id, status)}>
-                          СКРЫТЬ
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="outlined"
-                          color="success"
-                          onClick={() => btnShow(item.id, status)}>
-                          ПОКАЗАТЬ
-                        </Button>
-                      )}
-                      <div
-                        className={classNames(
-                          item.id,
-                          item.id === active
-                            ? status && {
-                                active: status ? status : status,
-                              }
-                            : null,
-                        )}>
-                        <img src={`Assets/images/${item.image}.gif`} alt={item.image} />
-                      </div>
-                    </td>
-                  </tr>
-                ) : null,
-              )}
+              reciveExercises['second_day'].map((item) => (
+                <tr key={item.id}>
+                  <td className="firstCount">{secondCount++}</td>
+                  <td className="name">{item.name}</td>
+                  <td className="approaches">{item.approaches}</td>
+                  <td className="repetitions">{item.repetitions}</td>
+                  <td className="more">
+                    {item.id === active && status ? (
+                      <Button
+                        variant="outlined"
+                        color="error"
+                        onClick={() => btnShow(item.id, status)}>
+                        СКРЫТЬ
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        color="success"
+                        onClick={() => btnShow(item.id, status)}>
+                        ПОКАЗАТЬ
+                      </Button>
+                    )}
+                    <div
+                      className={classNames(
+                        item.id,
+                        item.id === active
+                          ? status && {
+                              active: status ? status : status,
+                            }
+                          : null,
+                      )}>
+                      <img src={`Assets/images/${item.image}.png`} alt={item.image} />
+                    </div>
+                  </td>
+                </tr>
+              ))}
             <tr>
               <td></td>
               <td>Заминка</td>
@@ -303,44 +295,42 @@ export default function Calcualte({ userId }) {
               <td></td>
             </tr>
             {reciveExercises &&
-              reciveExercises.map((item) =>
-                item.body === 'Ноги, плечи' ? (
-                  <tr key={item.id}>
-                    <td className="firstCount">{thirdCount++}</td>
-                    <td className="name">{item.name}</td>
-                    <td className="approaches">{item.approaches}</td>
-                    <td className="repetitions">{item.repetitions}</td>
-                    <td className="more">
-                      {item.id === active && status ? (
-                        <Button
-                          variant="outlined"
-                          color="error"
-                          onClick={() => btnShow(item.id, status)}>
-                          СКРЫТЬ
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="outlined"
-                          color="success"
-                          onClick={() => btnShow(item.id, status)}>
-                          ПОКАЗАТЬ
-                        </Button>
-                      )}
-                      <div
-                        className={classNames(
-                          item.id,
-                          item.id === active
-                            ? status && {
-                                active: status ? status : status,
-                              }
-                            : null,
-                        )}>
-                        <img src={`Assets/images/${item.image}.gif`} alt={item.image} />
-                      </div>
-                    </td>
-                  </tr>
-                ) : null,
-              )}
+              reciveExercises['third_day'].map((item) => (
+                <tr key={item.id}>
+                  <td className="firstCount">{thirdCount++}</td>
+                  <td className="name">{item.name}</td>
+                  <td className="approaches">{item.approaches}</td>
+                  <td className="repetitions">{item.repetitions}</td>
+                  <td className="more">
+                    {item.id === active && status ? (
+                      <Button
+                        variant="outlined"
+                        color="error"
+                        onClick={() => btnShow(item.id, status)}>
+                        СКРЫТЬ
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        color="success"
+                        onClick={() => btnShow(item.id, status)}>
+                        ПОКАЗАТЬ
+                      </Button>
+                    )}
+                    <div
+                      className={classNames(
+                        item.id,
+                        item.id === active
+                          ? status && {
+                              active: status ? status : status,
+                            }
+                          : null,
+                      )}>
+                      <img src={`Assets/images/${item.image}.png`} alt={item.image} />
+                    </div>
+                  </td>
+                </tr>
+              ))}
             <tr>
               <td></td>
               <td>Заминка</td>
