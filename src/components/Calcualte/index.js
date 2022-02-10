@@ -78,7 +78,7 @@ export default function Calcualte({ userId }) {
       setReciveExercises(exercises[0]['Выраженный дефицит массы тела']);
     } else if (valueIMT > 18.5 && valueIMT <= 25) {
       setConcluison('Норма');
-      setReciveExercises(exercises.filter((item) => item.IMT['Норма']));
+      setReciveExercises(exercises[0]['Норма']);
     } else if (valueIMT > 25 && valueIMT <= 30) {
       setConcluison('Избыточная масса тела (предожирение)');
       setReciveExercises(exercises[0]['Избыточная масса тела (предожирение)']);

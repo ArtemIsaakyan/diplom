@@ -18,7 +18,7 @@ function App() {
       try {
         const [usersResponse, exerciseResponse] = await Promise.all([
           axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/users'),
-          axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/exercises'),
+          axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/newExercises'),
         ]);
         setUsers(usersResponse.data);
         setExercises(exerciseResponse.data);
