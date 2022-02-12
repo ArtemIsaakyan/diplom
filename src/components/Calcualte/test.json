@@ -656,7 +656,310 @@
          }
       ]
     },
-    "Ожирение второй степени" : {},
-    "Ожирение третьей степени (морбидное)" : {}
+    "Ожирение второй степени" : {
+      "first_day" : [
+        {
+          "name": "Скручивания лёжа на полу",
+          "image": "press",
+          "body": "Пресс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "1"
+         },
+         {
+          "name": "Жим штанги лёжа классический",
+          "image": "ZHim_shtangi_lyozha_klassicheskij",
+          "body": "Грудь, трицепс, передняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "2"
+         },
+         {
+          "name": "Разгибание ног в тренажёре",
+          "image": "Razgibanie_nog_v_trenazhyore",
+          "body": "Передняя часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "3"
+         },
+         {
+          "name": "Подтягивания широким хв. в гравитроне",
+          "image": "Podtyagivaniya_shirokim_hv._v_gravitrone",
+          "body": "Широчайшие мышцы, верх спины, предплечья, задняя дельта, бицепс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "4"
+         },
+         {
+          "name": "Протяжка со штангой",
+          "image": "Protyazhka_so_shtangoj",
+          "body": "Передняя дельта, средняя дельта, верх спины, бицепс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "5"
+         },
+         {
+          "name": "Отжимания от брусьев в гравитроне",
+          "image": "Otzhimaniya_ot_brus'ev_v_gravitrone",
+          "body": "Трицепс, грудь, передняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "6"
+         }
+      ],
+      "second_day" : [
+        {
+          "name": "Подъём ног лёжа",
+          "image": "press",
+          "body": "Пресс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "1"
+         },
+         {
+          "name": "Становая тяга с гантелями",
+          "image": "Stanovaya_tyaga_s_gantelyami",
+          "body": "Поясница, ягодицы, Задняя часть бедра, Верх спины, Передняя часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "2"
+         },
+         {
+          "name": "Сгибание ног в тренажёре лёжа",
+          "image": "Sgibanie_nog_v_trenazhyore_lyozha",
+          "body": "Задняя часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "3"
+         },
+         {
+          "name": "Жим штанги с груди стоя",
+          "image": "ZHim_shtangi_s_grudi_stoya",
+          "body": "Передняя дельта, трицепс, средняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "4"
+         },
+         {
+          "name": "Подтягивания обратным хв. в гравитроне",
+          "image": "Podtyagivaniya_obratnym_hv._v_gravitrone",
+          "body": "Бицепс, широчайшие мышцы, предплечья, верх спины, задняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "5"
+         },
+         {
+          "name": "Подъём на носки в тренажёре стоя",
+          "image": "Podyom_na_noski_v_trenazhyore_stoya",
+          "body": "Голень",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "6"
+         }
+      ],
+      "third_day" : [
+        {
+          "name": "Скручивания на тренажёре",
+          "image": "press",
+          "body": "Подвздошно-поясничная, пресс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "1"
+         },
+         {
+          "name": "Жим ногами в тренажёре",
+          "image": "ZHim_nogami_v_trenazhyore",
+          "body": "Передняя часть бедра, ягодицы, внутренняя часть бедра,задняя часть бедра, наружная часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "2"
+         },
+         {
+          "name": "Махи гантелями вперёд",
+          "image": "Mahi_gantelyami_vperyod",
+          "body": "Передняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "3"
+         },
+         {
+          "name": "Наклоны в ГАКК тренажёре",
+          "image": "Naklony_v_GAKK_trenazhyore",
+          "body": "Поясница, ягодицы, Задняя часть бедра, Передняя часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "4"
+         },
+         {
+          "name": "Разводы с гантелями лёжа",
+          "image": "Razvody_s_gantelyami_lyozha",
+          "body": "Грудь",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "5"
+         },
+         {
+          "name": "Отжимания от лавки сзади",
+          "image": "Otzhimaniya_ot_lavki_szadi",
+          "body": "Трицепс, грудь, передняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "6"
+         }
+      ]
+    },
+    "Ожирение третьей степени (морбидное)" : {
+      "first_day" : [
+        {
+          "name": "Скручивания на тренажёре",
+          "image": "press",
+          "body": "Подвздошно-поясничная, пресс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "1"
+         },
+         {
+          "name": "Жим ногами в тренажёре",
+          "image": "ZHim_nogami_v_trenazhyore",
+          "body": "Передняя часть бедра, ягодицы, внутренняя часть бедра,задняя часть бедра, наружная часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "2"
+         },
+         {
+          "name": "Махи гантелями вперёд",
+          "image": "Mahi_gantelyami_vperyod",
+          "body": "Передняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "3"
+         },
+         {
+          "name": "Наклоны в ГАКК тренажёре",
+          "image": "Naklony_v_GAKK_trenazhyore",
+          "body": "Поясница, ягодицы, Задняя часть бедра, Передняя часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "4"
+         },
+         {
+          "name": "Разводы с гантелями лёжа",
+          "image": "Razvody_s_gantelyami_lyozha",
+          "body": "Грудь",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "5"
+         },
+         {
+          "name": "Отжимания от лавки сзади",
+          "image": "Otzhimaniya_ot_lavki_szadi",
+          "body": "Трицепс, грудь, передняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "6"
+         }
+        
+      ],
+      "second_day" : [
+        {
+          "name": "Подъём ног лёжа",
+          "image": "press",
+          "body": "Пресс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "1"
+         },
+         {
+          "name": "Становая тяга с гантелями",
+          "image": "Stanovaya_tyaga_s_gantelyami",
+          "body": "Поясница, ягодицы, Задняя часть бедра, Верх спины, Передняя часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "2"
+         },
+         {
+          "name": "Сгибание ног в тренажёре лёжа",
+          "image": "Sgibanie_nog_v_trenazhyore_lyozha",
+          "body": "Задняя часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "3"
+         },
+         {
+          "name": "Жим штанги с груди стоя",
+          "image": "ZHim_shtangi_s_grudi_stoya",
+          "body": "Передняя дельта, трицепс, средняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "4"
+         },
+         {
+          "name": "Подтягивания обратным хв. в гравитроне",
+          "image": "Podtyagivaniya_obratnym_hv._v_gravitrone",
+          "body": "Бицепс, широчайшие мышцы, предплечья, верх спины, задняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "5"
+         },
+         {
+          "name": "Подъём на носки в тренажёре стоя",
+          "image": "Podyom_na_noski_v_trenazhyore_stoya",
+          "body": "Голень",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "6"
+         }
+      ],
+      "third_day" : [
+        {
+          "name": "Скручивания лёжа на полу",
+          "image": "press",
+          "body": "Пресс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "1"
+         },
+         {
+          "name": "Жим штанги лёжа классический",
+          "image": "ZHim_shtangi_lyozha_klassicheskij",
+          "body": "Грудь, трицепс, передняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "2"
+         },
+         {
+          "name": "Разгибание ног в тренажёре",
+          "image": "Razgibanie_nog_v_trenazhyore",
+          "body": "Передняя часть бедра",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "3"
+         },
+         {
+          "name": "Подтягивания широким хв. в гравитроне",
+          "image": "Podtyagivaniya_shirokim_hv._v_gravitrone",
+          "body": "Широчайшие мышцы, верх спины, предплечья, задняя дельта, бицепс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "4"
+         },
+         {
+          "name": "Протяжка со штангой",
+          "image": "Protyazhka_so_shtangoj",
+          "body": "Передняя дельта, средняя дельта, верх спины, бицепс",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "5"
+         },
+         {
+          "name": "Отжимания от брусьев в гравитроне",
+          "image": "Otzhimaniya_ot_brus'ev_v_gravitrone",
+          "body": "Трицепс, грудь, передняя дельта",
+          "repetitions": "10-15",
+          "approaches": "3",
+          "id": "6"
+         }
+      ]
+    }
   }
 ]

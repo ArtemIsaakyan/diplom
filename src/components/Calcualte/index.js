@@ -9,24 +9,10 @@ export default function Calcualte({ userId }) {
   const [concluison, setConcluison] = React.useState('');
   const [recomendedCalories, setRecomendedCalories] = React.useState('');
   const [reciveExercises, setReciveExercises] = React.useState(''); // получаем выборку из exercises
-  const [exercises, setExercises] = React.useState(''); // получаем массив со всеми упражнениями
+  const [exercises, setExercises] = React.useState(''); // получаем массив с упражнениями для занятий в зале
   const [active, setActive] = React.useState('');
   const [status, setStatus] = React.useState(false);
-
-  React.useEffect(() => {
-    async function fetchData() {
-      try {
-        const [exercisesResponse] = await Promise.all([
-          axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/newExercises'),
-        ]);
-        setExercises(exercisesResponse.data);
-      } catch (error) {
-        alert('Ошибка при запросе данных ;(');
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, []);
+  const [homeExercises, setHomeExercises] = React.useState(''); // получаем массив со всеми упражнениями для занятий дома
 
   function selectUser() {
     if (userId === 'default') {
@@ -44,6 +30,25 @@ export default function Calcualte({ userId }) {
         });
     }
   }
+
+  React.useEffect(() => {
+    async function fetchData() {
+      try {
+        const [exercisesResponse] = await Promise.all([
+          axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/newExercises'),
+        ]);
+        const [homeExercisesResponse] = await Promise.all([
+          axios.get('https://618101ae8bfae60017adfd5e.mockapi.io/homeExercises'),
+        ]);
+        setExercises(exercisesResponse.data);
+        setHomeExercises(homeExercisesResponse.data);
+      } catch (error) {
+        alert('Ошибка при запросе данных ;(');
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
 
   function calculateIMT(data) {
     // формула по расчету СТЕПЕНИ ОЖИРЕНИЯ
@@ -73,24 +78,46 @@ export default function Calcualte({ userId }) {
       }
     }
 
-    if (valueIMT <= 16) {
-      setConcluison('Выраженный дефицит массы тела');
-      setReciveExercises(exercises[0]['Выраженный дефицит массы тела']);
-    } else if (valueIMT > 18.5 && valueIMT <= 25) {
-      setConcluison('Норма');
-      setReciveExercises(exercises[0]['Норма']);
-    } else if (valueIMT > 25 && valueIMT <= 30) {
-      setConcluison('Избыточная масса тела (предожирение)');
-      setReciveExercises(exercises[0]['Избыточная масса тела (предожирение)']);
-    } else if (valueIMT > 30 && valueIMT <= 35) {
-      setConcluison('Ожирение первой степени');
-      setReciveExercises(exercises[0]['Ожирение первой степени']);
-    } else if (valueIMT > 35 && valueIMT <= 40) {
-      setConcluison('Ожирение второй степени');
-      setReciveExercises(exercises[0]['Ожирение второй степени']);
-    } else if (valueIMT > 40) {
-      setConcluison('Ожирение третьей степени (морбидное)');
-      setReciveExercises(exercises[0]['Ожирение третьей степени (морбидное)']);
+    if (data[0]['opportunity'] === 'gym') {
+      if (valueIMT <= 16) {
+        setConcluison('Выраженный дефицит массы тела');
+        setReciveExercises(exercises[0]['Выраженный дефицит массы тела']);
+      } else if (valueIMT > 18.5 && valueIMT <= 25) {
+        setConcluison('Норма');
+        setReciveExercises(exercises[0]['Норма']);
+      } else if (valueIMT > 25 && valueIMT <= 30) {
+        setConcluison('Избыточная масса тела (предожирение)');
+        setReciveExercises(exercises[0]['Избыточная масса тела (предожирение)']);
+      } else if (valueIMT > 30 && valueIMT <= 35) {
+        setConcluison('Ожирение первой степени');
+        setReciveExercises(exercises[0]['Ожирение первой степени']);
+      } else if (valueIMT > 35 && valueIMT <= 40) {
+        setConcluison('Ожирение второй степени');
+        setReciveExercises(exercises[0]['Ожирение второй степени']);
+      } else if (valueIMT > 40) {
+        setConcluison('Ожирение третьей степени (морбидное)');
+        setReciveExercises(exercises[0]['Ожирение третьей степени (морбидное)']);
+      }
+    } else if (data[0]['opportunity'] === 'home') {
+      if (valueIMT <= 16) {
+        setConcluison('Выраженный дефицит массы тела');
+        setReciveExercises(homeExercises[0]['Выраженный дефицит массы тела']);
+      } else if (valueIMT > 18.5 && valueIMT <= 25) {
+        setConcluison('Норма');
+        setReciveExercises(homeExercises[0]['Норма']);
+      } else if (valueIMT > 25 && valueIMT <= 30) {
+        setConcluison('Избыточная масса тела (предожирение)');
+        setReciveExercises(homeExercises[0]['Избыточная масса тела (предожирение)']);
+      } else if (valueIMT > 30 && valueIMT <= 35) {
+        setConcluison('Ожирение первой степени');
+        setReciveExercises(homeExercises[0]['Ожирение первой степени']);
+      } else if (valueIMT > 35 && valueIMT <= 40) {
+        setConcluison('Ожирение второй степени');
+        setReciveExercises(homeExercises[0]['Ожирение второй степени']);
+      } else if (valueIMT > 40) {
+        setConcluison('Ожирение третьей степени (морбидное)');
+        setReciveExercises(homeExercises[0]['Ожирение третьей степени (морбидное)']);
+      }
     }
   }
 
@@ -112,7 +139,6 @@ export default function Calcualte({ userId }) {
       </Stack>
       <div className="info_block">
         {concluison && <h3>Информация</h3>}
-
         {concluison && <div>Расчёт индекса массы тела: {concluison} </div>}
         {recomendedCalories && (
           <div>Суточная норма калорий: {recomendedCalories.toFixed(0)} ккал</div>
@@ -182,6 +208,7 @@ export default function Calcualte({ userId }) {
                   </td>
                 </tr>
               ))}
+
             <tr>
               <td></td>
               <td>Заминка</td>

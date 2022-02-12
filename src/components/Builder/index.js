@@ -11,6 +11,7 @@ export default function Builder() {
   const [sex, setSex] = React.useState('');
   const [goal, setGoal] = React.useState('');
   const [days, setDays] = React.useState('');
+  const [opportunity, setOpportunity] = React.useState('');
   const [age, setAge] = React.useState('');
   const [height, setHeight] = React.useState('');
   const [weight, setWeight] = React.useState('');
@@ -40,6 +41,9 @@ export default function Builder() {
   const handleChangeDays = (event) => {
     setDays(event.target.value);
   };
+  const handleChangeOpportunity = (event) => {
+    setOpportunity(event.target.value);
+  };
 
   function save() {
     if (name && age && goal && days && height && weight && sex && physicalActivity) {
@@ -52,6 +56,7 @@ export default function Builder() {
           age: age,
           height: height,
           weight: weight,
+          opportunity: opportunity,
           physicalActivity: physicalActivity,
         })
         .then(function (response) {
@@ -120,6 +125,20 @@ export default function Builder() {
               onChange={handleChangeDays}>
               <Mui.MenuItem value={'twoDays'}>2 дня в неделю</Mui.MenuItem>
               <Mui.MenuItem value={'threeDays'}>3 дня в неделю</Mui.MenuItem>
+            </Mui.Select>
+          </Mui.FormControl>
+        </Mui.Box>
+        <Mui.Box sx={{ minWidth: 120 }} className="opportunity">
+          <Mui.FormControl fullWidth>
+            <Mui.InputLabel id="demo-simple-select-label">Способ проведения занятий</Mui.InputLabel>
+            <Mui.Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={opportunity}
+              label="Способ проведения занятий"
+              onChange={handleChangeOpportunity}>
+              <Mui.MenuItem value={'home'}>В домашних условиях</Mui.MenuItem>
+              <Mui.MenuItem value={'gym'}>В спортивном зале (с тренажёрами)</Mui.MenuItem>
             </Mui.Select>
           </Mui.FormControl>
         </Mui.Box>
