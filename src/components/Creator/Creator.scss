@@ -8,3 +8,27 @@ body {
   font-size: 30px;
   font-weight: 500;
 }
+
+li.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.user_name.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonDelete {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.buttonDelete:hover {
+  border: 1px solid rgba(104, 102, 102, 0.664);
+  border-radius: 50%;
+  transition: 0.2s ease all;
+}
+
+form.MuiBox-root.MuiBox-root-2.name_field {
+  text-align: center;
+}

@@ -3,7 +3,6 @@ import axios from 'axios';
 import Builder from './components/Builder';
 import Creator from './components/Creator';
 import Menu from './components/Menu';
-import Home from './components/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.scss';
@@ -36,7 +35,6 @@ function App() {
       <div className="App">
         <Menu />
         <Switch>
-          <Route exact path="/home" component={Home} />
           <Route exact path="/info" component={Builder} />
           <Route exact path="/calculate">
             <Creator users={users} exercises={exercises} />

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import axios from 'axios';
+import classNames from 'classnames';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,9 +17,20 @@ export default function Creator({ users, exercises }) {
     selectUser(event.target.value);
   };
 
+  function deleteUser(id) {
+    axios
+      .delete(`https://618101ae8bfae60017adfd5e.mockapi.io/users/${id}`)
+      .then(function (response) {
+        alert('Пользователь удален');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   return (
     <React.Fragment>
-      <h2 className="header-creator">Программа тренеровок</h2>
+      <h2 className="header-creator">Программа тренировок</h2>
       <div className="select_block">
         <Box sx={{ maxWidth: 240 }}>
           <FormControl fullWidth>
@@ -32,8 +45,13 @@ export default function Creator({ users, exercises }) {
                 Выбрать пользователя
               </MenuItem>
               {users.map((val) => (
-                <MenuItem key={val.id} value={val.id}>
+                <MenuItem className="user_name" key={val.id} value={val.id}>
                   {val.name}
+                  <button
+                    className={classNames('buttonDelete', val.id)}
+                    onClick={() => deleteUser(val.id)}>
+                    <img src={`Assets/icons/delete.svg`} alt="" />
+                  </button>
                 </MenuItem>
               ))}
             </Select>
