@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/https---github.com-ArtemIsaakyan-fintess-app/static/css/main.aca725e2.chunk.css",
+    "main.js": "/https---github.com-ArtemIsaakyan-fintess-app/static/js/main.2312f0e7.chunk.js",
+    "main.js.map": "/https---github.com-ArtemIsaakyan-fintess-app/static/js/main.2312f0e7.chunk.js.map",
+    "runtime-main.js": "/https---github.com-ArtemIsaakyan-fintess-app/static/js/runtime-main.ca15644e.js",
+    "runtime-main.js.map": "/https---github.com-ArtemIsaakyan-fintess-app/static/js/runtime-main.ca15644e.js.map",
+    "static/js/2.6835e70f.chunk.js": "/https---github.com-ArtemIsaakyan-fintess-app/static/js/2.6835e70f.chunk.js",
+    "static/js/2.6835e70f.chunk.js.map": "/https---github.com-ArtemIsaakyan-fintess-app/static/js/2.6835e70f.chunk.js.map",
+    "index.html": "/https---github.com-ArtemIsaakyan-fintess-app/index.html",
+    "static/css/main.aca725e2.chunk.css.map": "/https---github.com-ArtemIsaakyan-fintess-app/static/css/main.aca725e2.chunk.css.map",
+    "static/js/2.6835e70f.chunk.js.LICENSE.txt": "/https---github.com-ArtemIsaakyan-fintess-app/static/js/2.6835e70f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca15644e.js",
+    "static/js/2.6835e70f.chunk.js",
+    "static/css/main.aca725e2.chunk.css",
+    "static/js/main.2312f0e7.chunk.js"
+  ]
+}
